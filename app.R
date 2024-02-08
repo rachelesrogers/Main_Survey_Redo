@@ -69,7 +69,7 @@ ui <- fluidPage(
 
 # --- server ------
 
-pool <- dbPool(drv = RSQLite::SQLite(), dbname = "redo_database.sqlite")
+ pool <- dbPool(drv = RSQLite::SQLite(), dbname = "main_redo_database.sqlite")
 
 server <- function(input, output, session) {
   

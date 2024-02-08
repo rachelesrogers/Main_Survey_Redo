@@ -27,7 +27,7 @@ margin-right: auto;
 }
 
 .pros {
-	background: #CB7174;
+	background: #d09597;
 	text-align: left;
 	margin-right:auto;
 	margin-left: 0;
@@ -43,7 +43,7 @@ margin-right: auto;
 	border: 20px solid transparent;
 	border-left: 0;
 	border-bottom: 0;
-	border-right-color: #CB7174;
+	border-right-color: #d09597;
 	margin-top: -10px;
 	margin-left: -20px;
 }
@@ -58,7 +58,7 @@ margin-right: auto;
 }
 
 .firearms{
- 	background: #e48a43; 
+ 	background: #ea9a5d; 
  	text-align: right;
  	margin-right:0;
 	margin-left: auto;
@@ -72,7 +72,7 @@ margin-right: auto;
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-left-color: #e48a43;
+	border-left-color: #ea9a5d;
 	border-right: 0;
 	border-bottom: 0;
 	margin-top: -10px;
@@ -119,7 +119,7 @@ margin-right: auto;
 }
 
 .court {
-	background: #D3D3D3;
+	background: #e8e8e8;
 	text-align: center;
 	margin-left:15%;
 margin-right:15%;
@@ -133,7 +133,7 @@ margin-right:15%;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid transparent;
-  border-bottom: 10px solid #D3D3D3;
+  border-bottom: 10px solid #e8e8e8;
   right: 50%;
   top: -18px;
 }
@@ -157,7 +157,7 @@ margin-right:15%;
 }
 
 .def {
-	background: #b396c2;
+	background: #bba3c7;
 	text-align: left;
 	margin-right:auto;
 	margin-left: 0;
@@ -172,7 +172,7 @@ margin-right:15%;
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-right-color: #b396c2;
+	border-right-color: #bba3c7;
 	border-left: 0;
 	border-bottom: 0;
 	margin-top: -10px;
