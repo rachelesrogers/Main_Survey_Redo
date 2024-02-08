@@ -53,11 +53,15 @@ ui <- fluidPage(
                    wellPanel(style="margin-top:70px",uiOutput("demoquest"),
                              column(12, actionButton("demopage", "Next"), align="center"),
                              br()))),
-  conditionalPanel(condition="input.demopage==2 & output.alg == 'No' & input.testimonypage < 14",
+  conditionalPanel(condition="input.demopage==2 & 
+                   ((output.alg == 'No' & input.testimonypage < 14) |
+                   (output.alg == 'Yes' & input.testimonypage < 22))",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", p(uiOutput("testimony"))),
                    column(12, actionButton("testimonypage", "Next"), align="center"))),
-  conditionalPanel(condition="input.testimonypage == 14 & input.questionpage < 11",
+  conditionalPanel(condition="((output.alg == 'No' & input.testimonypage == 14) |
+                   (output.alg == 'Yes' & input.testimonypage == 22)) & 
+                   input.questionpage < 11",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", uiOutput("finalquest"),
                    column(12, actionButton("questionpage", "Next"), align="center"),
@@ -74,7 +78,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   id <- NULL
-  algorithm <- 'No'
+  algorithm <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
   output$alg <- reactive(algorithm)
   outputOptions(output, "alg", suspendWhenHidden = FALSE)
   picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
