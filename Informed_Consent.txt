@@ -1,0 +1,122 @@
+"<b> IRB Project ID#: 21606 </b>
+</br>
+</br>
+<b>1. Formal Study Title: </b></br>
+Explainable Machine Learning for Forensics in Courtrooms </br>
+<b> 2. Authorized Study Personnel </b> </br>
+<b> Principal Investigator:</b> Susan Vanderplas, Ph.D. &nbsp;&nbsp;&nbsp;&nbsp; Office: (402) 472-7290 </br>
+<b> Secondary Investigator:</b> Rachel Rogers, MS &nbsp;&nbsp;&nbsp;&nbsp; Office: (402) 472-2903 
+</br>
+</br>
+<b> 3. Key Information: </b></br>
+If you agree to participate in this research study, the project will involve: </br>
+<ul>
+<li> Research participants at the age of majority in their state </li>
+<li> Research participants who are eligible jurors in the United States, and who have normal or 
+corrected-to-normal vision </li>
+<li> Procedures will include reviewing hypothetical trial information and answering questions regarding
+your views of the proceedings </li>
+<li> 1 online session is required </li>
+<li> This session will take less than 1 hour </li>
+<li> There are no risks associated with this study </li>
+<li> Your data collected from this study may be shared in anonymous form, as described below </li>
+<li> You will receive a monetary amount equivalent to $15/hr, based on the 
+estimated completion time of this study, for your time and participation </li>
+<li> Your participation is voluntary and you can decide not to participate at any time </li>
+</ul>
+</br>
+<b> 4. Invitation </b></br>
+You are invited to take part in this research study. The information in this form is meant to help
+you decide whether or not to participate. If you have any questions, contact study personnel.
+</br>
+</br>
+<b> 5. Why are you being asked to be in this research study? </b></br>
+You are being asked to be in this study because you are an eligible juror in the United States with normal or corrected-to-normal vision (that is, you wear glasses or contacts). You must be at the age of majority in your area to participate. 
+</br>
+</br>
+<b> 6. What is the reason for doing this research study?</b></br>
+The purpose of this project is to assess how potential jurors respond to information presented in
+jury trials. Specifically, we wish to evaluate how the presentation of information, as well as the
+presence of additional information (such as demonstrative evidence or new methods of analyzing evidence)
+may sway jurors' feelings regarding the evidence presented, as well as the individuals involved in the case.
+</br>
+</br>
+<b> 7. What will be done during this research study? </b></br>
+You will be asked to review a trial scenario and answer questions regarding the information presented.
+Questions will be similar, but slightly different.
+This should take less than an hour to complete and you may complete it from your home computer. 
+</br>
+</br>
+<b>8. How will my data be used? </b> </br>
+This study will involve the collection of private information (name, dates, etc.) for payment purposes. Your information
+could be used or distributed to another researcher for future research studies, at conferences, or in
+publications without an additional
+informed consent from you. Any personal identifiers (name, dates, etc.) will be removed prior to being distributed.
+</br>
+</br>
+<b> 9. What are the possible risks of being in this research study? </b> </br>
+There are no known risks to you from being in this research study.
+</br>
+</br>
+<b> 10. What are the possible benefits to you? </b> </br>
+You are not expected to get any benefit from being in this study.
+</br>
+</br>
+<b> 11. What are the possible benefits to other people? </b></br>
+The benefits to society may include a better understanding of how jurors perceive information presented
+in a jury trial.
+</br></br>
+<b> 12. What are the alternatives to being in this research study? </b></br>
+Instead of being in this research study you can choose not to participate.
+</br>
+</br>
+<b> 13. What will being in this research study cost you? </b></br>
+There is no cost to you to be in this research study. 
+</br>
+</br>
+<b> 14. How will you be compensated for being in this research study? </b></br>
+Monetary compensation will be provided in an amount equivalent to $15/hr, based on the estimated
+completion time for the study.
+In order to document your receipt of the payment, you must provide your name and address to
+the research team via Prolific. Payment records will be stored for up to 7 years and may be stored with Financial
+Personnel at the University. Payment information will not be associated with survey responses.
+</br>
+</br>
+<b> 15. What should you do if you have a problem during this research study? </b></br>
+Your welfare is a major concern of every member of the research team. If you have a problem as a 
+direct result of being in this study, you should immediately contact one of the people listed at the
+beginning of this consent form.
+</br>
+</br>
+<b> 16. How will information about you be protected? </b></br>
+Reasonable steps will be taken to protect your privacy and the confidentiality of your study data. </br>
+The research records will be securely stored electronically and will only be seen by the research team and/or
+those authorized to view, access, or use the records during and after the study. </br>
+Those who will have access to your research records are the study personnel, the Institutional Review Board (IRB),
+and any other person, agency, or sponsor as required by law or institutional responsibility. Information from this
+study may be published in scientific journals or presented at scientific meetings and may be reported individually,
+or as group or summarized data, but your identity will be kept strictly confidential.
+</br>
+</br>
+<b> 17. What are your rights as a research subject? </b></br>
+You may ask any questions concerning this research and have those questions answered before agreeing to participate
+in or during the study. </br>
+For study related questions, please contact the investigator(s) listed at the beginning of this form. </br>
+For questions concerning your rights or complaints about the research, contact the Institutional Review Board (IRB): </br>
+<ul>
+<li> Phone: +1-402-472-6965 </li>
+<li> Email: irb@unl.edu </li>
+</ul>
+</br>
+<b> 18. What will happen if you decide not to be in this research study or decide to stop participating once you start? </b></br>
+You can decide not to be in this research study, or you can stop being in this research study ( &ldquo; withdraw &rdquo; ) at any time before,
+during, or after the research begins for any reason. Deciding not to be in this research study or deciding to withdraw will not
+affect your relationship with the investigator or with the University of Nebraska-Lincoln. </br>
+You will not lose any benefits to which you are entitled.
+</br>
+</br>
+<b> Documentation of informed consent</b></br>
+By clicking &ldquo; I agree &rdquo; and continuing with the study, this means that<br/>(1) you have read and understood this consent form, and <br/>(2)
+you have decided to be in the research study.
+
+"
