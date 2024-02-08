@@ -53,17 +53,21 @@ ui <- fluidPage(
                    wellPanel(style="margin-top:70px",uiOutput("demoquest"),
                              column(12, actionButton("demopage", "Next"), align="center"),
                              br()))),
-  conditionalPanel(condition="input.demopage==2 & input.testimonypage<14",
+  conditionalPanel(condition="input.demopage==2 & 
+                   ((output.alg == 'No' & input.testimonypage < 14) |
+                   (output.alg == 'Yes' & input.testimonypage < 22))",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", p(uiOutput("testimony"))),
                    column(12, actionButton("testimonypage", "Next"), align="center"))),
-  conditionalPanel(condition="input.testimonypage==14 & input.questionpage < 11",
+  conditionalPanel(condition="((output.alg == 'No' & input.testimonypage == 14) |
+                   (output.alg == 'Yes' & input.testimonypage == 22)) 
+                   & input.questionpage < 11",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", uiOutput("finalquest"),
                    column(12, actionButton("questionpage", "Next"), align="center"),
                    br()))),
   conditionalPanel(condition="input.questionpage ==11",
-                   wellPanel(style="margin-top:100px","Completion Code: C10EC7YB"))
+                   wellPanel(style="margin-top:100px","Completion Code: ABCD"))
   
 )
 
@@ -74,11 +78,12 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   id <- NULL
-  algorithm <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
+  algorithm <- "No"
+  output.alg <- reactiveVal(algorithm)
   picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
   conclusion <- sample(c("Match", "NoMatch"),1, prob=c(0.5, 0.5))
-  # questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
-                       # question_order[sample(nrow(question_order),1),], c("quest_11"="comments"))
+  questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
+                       question_order[sample(nrow(question_order),1),], c("quest_11"="comments"))
   random_number <- runif(1,0,100)
   start_time <- Sys.time()
   answer <- reactiveVal()
