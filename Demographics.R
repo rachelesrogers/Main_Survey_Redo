@@ -53,14 +53,14 @@ list(
   br(),
   radioButtons("vote", "I tend to vote:", c(
     "Republican", "Democratic",
-    "No consistent preference"
+    "No consistent preference", "Other"
   ), selected=character(0)),
   br(),
   radioButtons(
     "poli", "My political views tend to be:",
     c(
       "Very Liberal", "Somewhat Liberal", "Middle of the Road",
-      "Somewhat Conservative", "Very Conservative"
+      "Somewhat Conservative", "Very Conservative", "Other"
     ), selected=character(0)
   ),
   br(),
