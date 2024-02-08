@@ -122,10 +122,10 @@ server <- function(input, output, session) {
     ))
   })
   
-  observeEvent(input$informed,{
-               con <- localCheckout(pool, env = parent.frame())
-               dbAppendTable(con, "consent_page", consentans())
-               })
+  # observeEvent(input$informed,{
+  #              con <- localCheckout(pool, env = parent.frame())
+  #              dbAppendTable(con, "consent_page", consentans())
+  #              })
   
   demo1ans <- reactive({
     return(data.frame(
@@ -193,14 +193,14 @@ server <- function(input, output, session) {
   ))
   
   
-  observeEvent(input$demopage,{
-    con <- localCheckout(pool, env = parent.frame())
-    if (input$demopage ==1){
-    dbAppendTable(con, "demographics1", demo1ans())} else if (input$demopage ==2){
-      dbAppendTable(con, "demographics2", demo2ans())
-    }
-    question_verification(0)
-  })
+  # observeEvent(input$demopage,{
+  #   con <- localCheckout(pool, env = parent.frame())
+  #   if (input$demopage ==1){
+  #   dbAppendTable(con, "demographics1", demo1ans())} else if (input$demopage ==2){
+  #     dbAppendTable(con, "demographics2", demo2ans())
+  #   }
+  #   question_verification(0)
+  # })
   
   noteans <- reactive({
     return(data.frame(
@@ -216,10 +216,10 @@ server <- function(input, output, session) {
     ))
   })
   
-  observeEvent(input$testimonypage,{
-    con <- localCheckout(pool, env = parent.frame())
-    dbAppendTable(con, "notepad", noteans())
-  })
+  # observeEvent(input$testimonypage,{
+  #   con <- localCheckout(pool, env = parent.frame())
+  #   dbAppendTable(con, "notepad", noteans())
+  # })
   
   # observeEvent(input$convict | input$def_comment | input$guilt_opinion | 
   #                input$check | input$evidence_strength | input$hidden_probability |
@@ -333,11 +333,11 @@ server <- function(input, output, session) {
     ))
   })
   
-  observeEvent(input$questionpage,{
-    con <- localCheckout(pool, env = parent.frame())
-    dbAppendTable(con, "survey_responses", responseans())
-    question_verification(0)
-  })
+  # observeEvent(input$questionpage,{
+  #   con <- localCheckout(pool, env = parent.frame())
+  #   dbAppendTable(con, "survey_responses", responseans())
+  #   question_verification(0)
+  # })
   
   observe({
     shinyjs::toggleState("questionpage", question_verification() == 1)
