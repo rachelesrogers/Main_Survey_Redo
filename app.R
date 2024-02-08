@@ -69,16 +69,16 @@ ui <- fluidPage(
 
 # --- server ------
 
- pool <- dbPool(drv = RSQLite::SQLite(), dbname = "main_redo_database.sqlite")
+ # pool <- dbPool(drv = RSQLite::SQLite(), dbname = "main_redo_database.sqlite")
 
 server <- function(input, output, session) {
   
   id <- NULL
-  algorithm <- "No"
-  picture <- "No"
-  conclusion <- sample(c("Match", "NoMatch"),1, prob=c(0.8, 0.2))
-  questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
-                       question_order[sample(nrow(question_order),1),], c("quest_11"="comments"))
+  algorithm <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
+  picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
+  conclusion <- sample(c("Match", "NoMatch"),1, prob=c(0.5, 0.5))
+  # questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
+                       # question_order[sample(nrow(question_order),1),], c("quest_11"="comments"))
   random_number <- runif(1,0,100)
   start_time <- Sys.time()
   answer <- reactiveVal()
@@ -116,7 +116,9 @@ server <- function(input, output, session) {
       time = Sys.time(),
       page = counter(),
       randomnumber = random_number,
-      conclusion = conclusion
+      conclusion = conclusion,
+      algorithm = algorithm,
+      picture = picture
     ))
   })
   
@@ -138,7 +140,9 @@ server <- function(input, output, session) {
       time = Sys.time(),
       randomnumber = random_number,
       start_time = start_time,
-      conclusion = conclusion
+      conclusion = conclusion,
+      algorithm = algorithm,
+      picture = picture
     ))
   })
   
@@ -156,7 +160,9 @@ server <- function(input, output, session) {
       time = Sys.time(),
       randomnumber = random_number,
       start_time = start_time,
-      conclusion = conclusion
+      conclusion = conclusion,
+      algorithm = algorithm,
+      picture = picture
     ))
   })
   
@@ -204,7 +210,9 @@ server <- function(input, output, session) {
       randomnumber = random_number,
       start_time = start_time,
       notes = input$notepad,
-      conclusion = conclusion
+      conclusion = conclusion,
+      algorithm = algorithm,
+      picture = picture
     ))
   })
   
@@ -319,7 +327,9 @@ server <- function(input, output, session) {
       start_time = start_time,
       question = questorder[[input$questionpage]],
       answer = answer(),
-      conclusion = conclusion
+      conclusion = conclusion,
+      algorithm = algorithm,
+      picture = picture
     ))
   })
   

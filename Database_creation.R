@@ -1,7 +1,7 @@
 library(DBI)
 library(RSQLite)
 
-redo_dataset <- dbConnect(RSQLite::SQLite(), "redo_database.sqlite")
+redo_dataset <- dbConnect(RSQLite::SQLite(), "main_redo_database.sqlite")
 
 dbGetQuery(redo_dataset, "SELECT * FROM survey_responses")
 # dbRemoveTable(redo_dataset, "consent_page")
@@ -11,7 +11,9 @@ consent <- data.frame(
   time = character(),
   page = numeric(),
   randomnumber = numeric(),
-  conclusion = character()
+  conclusion = character(),
+  algorithm = character(),
+  picture = character()
 )
 
 dbWriteTable(redo_dataset, "consent_page", consent)
@@ -28,7 +30,9 @@ demographics1 <- data.frame(
   time = character(),
   randomnumber = numeric(),
   start_time = character(),
-  conclusion = character()
+  conclusion = character(),
+  algorithm = character(),
+  picture = character()
 )
 
 dbWriteTable(redo_dataset, "demographics1", demographics1)
@@ -46,7 +50,9 @@ demographics2 <- data.frame(
   time = character(),
   randomnumber = numeric(),
   start_time = character(),
-  conclusion = character()
+  conclusion = character(),
+  algorithm = character(),
+  picture = character()
 )
 
 dbWriteTable(redo_dataset, "demographics2", demographics2)
@@ -58,7 +64,9 @@ notepad <- data.frame(
   randomnumber = numeric(),
   start_time = character(),
   notes = character(),
-  conclusion = character()
+  conclusion = character(),
+  algorithm = character(),
+  picture = character()
 )
 
 dbWriteTable(redo_dataset, "notepad", notepad)
@@ -71,7 +79,9 @@ survey_responses <- data.frame(
   start_time = character(),
   question = character(),
   answer = character(),
-  conclusion = character()
+  conclusion = character(),
+  algorithm = character(),
+  picture = character()
 )
 
 dbWriteTable(redo_dataset, "survey_responses", survey_responses)
