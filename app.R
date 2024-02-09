@@ -79,8 +79,10 @@ server <- function(input, output, session) {
   algorithm <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
   if (algorithm == "Yes"){
     output$testpages <- reactive(22)
+    servpages <- reactive(22)
     } else if (algorithm=="No"){
       output$testpages <- reactive(14)
+      servpages <- reactive(14)
                           }
   outputOptions(output, "testpages", suspendWhenHidden = FALSE)
   picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
@@ -107,7 +109,8 @@ server <- function(input, output, session) {
   })
   
   observe({
-    updateProgressBar(session = session, id = "progress", value = (counter()/29)*100)
+    updateProgressBar(session = session, id = "progress", 
+                      value = (counter()/(servpages() + 15))*100)
   })
 
   output$informed_consent <- renderUI(HTML(consenttxt[1,]))
