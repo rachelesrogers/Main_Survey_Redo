@@ -54,15 +54,18 @@ questions <- list(
 
 scientific = list(
   br(),
-  tags$head(tags$style('.irs-single {
+  tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max, .irs-single {
             visibility: hidden !important;
     }')),
-  sliderInput("scientific",
-              label = "How scientific did you find the examiner's comparison?",
-              min = 0, max = 100, value = 50,
-              ticks=FALSE,
-              animate=FALSE
-  ),
+  fluidRow(column(2, align="center", p("unscientific", 
+                                       style="padding:20px; margin-top:33px")),
+           column(8,    sliderInput("scientific",
+                                    label = "How scientific did you find the examiner's comparison?",
+                                    min = 0, max = 100, value = 50,
+                                    ticks=FALSE,
+                                    animate=FALSE)),
+           column(2, align="center", p("scientific", 
+                                       style="padding:20px; margin-top:33px"))),
   br()
 ),
 
