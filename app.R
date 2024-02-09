@@ -54,13 +54,11 @@ ui <- fluidPage(
                              column(12, actionButton("demopage", "Next"), align="center"),
                              br()))),
   conditionalPanel(condition="input.demopage==2 & 
-                   ((output.alg == 'No' & input.testimonypage < 14) |
-                   (output.alg == 'Yes' & input.testimonypage < 22))",
+                   input.testimonypage < output.testpages",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", p(uiOutput("testimony"))),
                    column(12, actionButton("testimonypage", "Next"), align="center"))),
-  conditionalPanel(condition="((output.alg == 'No' & input.testimonypage == 14) |
-                   (output.alg == 'Yes' & input.testimonypage == 22)) & 
+  conditionalPanel(condition="input.testimonypage == output.testpages & 
                    input.questionpage < 11",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", uiOutput("finalquest"),
@@ -79,8 +77,12 @@ server <- function(input, output, session) {
   
   id <- NULL
   algorithm <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
-  output$alg <- reactive(algorithm)
-  outputOptions(output, "alg", suspendWhenHidden = FALSE)
+  if (algorithm == "Yes"){
+    output$testpages <- reactive(22)
+    } else if (algorithm=="No"){
+      output$testpages <- reactive(14)
+                          }
+  outputOptions(output, "testpages", suspendWhenHidden = FALSE)
   picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
   conclusion <- sample(c("Match", "NoMatch"),1, prob=c(0.5, 0.5))
   questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
