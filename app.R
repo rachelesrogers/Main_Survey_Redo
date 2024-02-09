@@ -87,8 +87,15 @@ server <- function(input, output, session) {
   outputOptions(output, "testpages", suspendWhenHidden = FALSE)
   picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
   conclusion <- sample(c("Match", "NoMatch"),1, prob=c(0.5, 0.5))
-  questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
-                       question_order[sample(nrow(question_order),1),], c("quest_11"="comments"))
+  # questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
+  #                      question_order[sample(nrow(question_order),1),], c("quest_11"="comments"))
+  
+  questorder <- 
+    c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion",
+      "quest_4"="check","quest_5"="hidden_probability","quest_6"="mistakes",
+      "quest_7"="numeric_chance","quest_8"="guilt_chance","quest_9"="consistency",
+      "quest_10"="scientific","quest_11"="comments")
+  
   random_number <- runif(1,0,100)
   start_time <- Sys.time()
   answer <- reactiveVal()

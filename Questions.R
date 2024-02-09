@@ -37,14 +37,6 @@ questions <- list(
   br()
   ),
   
- evidence_strength = list(
-  br(),
-  radioGroupButtons("evidence_strength", "How strong would you say the case against the defendant is?",
-                    choices = c("1 Not at all strong", "2", "3","4", "5 Moderately strong", "6","7","8","9 Extremely strong"),
-                    selected = character(0)),
-  br()
-  ),
-  
   hidden_probability = list(
   br(),
   tags$head(tags$style('.irs-single {
@@ -60,16 +52,44 @@ questions <- list(
   br()
 ),
 
-visible_probability = list(
+scientific = list(
   br(),
   tags$head(tags$style('.irs-single {
-            visibility: visible !important;
+            visibility: hidden !important;
     }')),
-  sliderInput("visible_probability",
-              label = "What would you say is the percent chance that the
-                    defendant is the man who fired the shot in the convenience store?",
-              min = 0, max = 100, value = 50
+  sliderInput("scientific",
+              label = "How scientific did you find the examiner's comparison?",
+              min = 0, max = 100, value = 50,
+              ticks=FALSE,
+              animate=FALSE
   ),
+  br()
+),
+
+mistakes = list(
+  br(),
+  radioButtons("mistakes", 
+               "How often do you think the firearms examiner makes mistakes?",
+               choices = c("Always makes mistakes", "About 9,999 comparisons in 10,000", 
+                           "About 999 comparisons in 1,000","About 99 comparisons in 100", 
+                           "About 9 comparisons in 10", "1 comparison in 2 (half of comparisons)",
+                           "About 1 comparison in 10","About 1 comparison in 100","About 1 comparison in 1,000",
+                           "About 1 comparison in 10,000", "Never makes mistakes"),
+               selected = character(0)),
+  br()
+), 
+
+consistency = list(
+  br(),
+  radioButtons("consistency", 
+               "If other examiners were asked to make the same bullet comparison,
+               how many do you believe would agree with the firearms examiner?",
+               choices = c("All examiners", "About 9,999 examiners in 10,000", 
+                           "About 999 examiners in 1,000","About 99 examiners in 100", 
+                           "About 9 examiners in 10", "1 examiner in 2 (half of examiners)",
+                           "About 1 examiner in 10","About 1 examiner in 100","About 1 examiner in 1,000",
+                           "About 1 examiner in 10,000", "No examiner"),
+               selected = character(0)),
   br()
 ), 
 
@@ -87,44 +107,15 @@ numeric_chance = list(
                                                   "", value=NA, minimumValue=1, 
                                                   maximumValue=1000000000000))),
   fluidRow(column(4, align="center", p("that the defendant is", style="padding:20px;")),
-           column(4,  selectInput("guilt_choice", "", 
-                                  c("innocent", "guilty"), width = "200px"))),
+           column(4,  selectInput("guilt_choice",  " ",
+                                  choices = c("innocent", "guilty"),
+                                  selected=character(0), width = "200px"))),
   br()
 ),
 
-betting = list(
+guilt_chance = list(
   br(),
-  conditionalPanel(condition=("input.guilt_opinion == 'Yes'"),
-                   value="guilty_panel_bet",
-               shinyWidgets::autonumericInput("guilt_bet", 
-                                              "If the researchers provided you with $50, how much would you be willing to bet on Cole being guilty?
-                                              If you are correct, you double your money.", 
-                                              value = "", 
-                                           currencySymbol="$",
-                                          currencySymbolPlacement = "p",
-                                              minimumValue= 0, 
-                                              maximumValue= 50
-                                           )
-               ),
-  conditionalPanel(condition=("input.guilt_opinion == 'No'"),
-                   value="innocent_panel_bet",
-                   shinyWidgets::autonumericInput("innocent_bet", 
-                                "If the researchers provided you with $50, how much would you be willing to bet on Cole being innocent?
-                                If you are correct, you double your money.", 
-                                value = "", 
-                                currencySymbol="$",
-                                currencySymbolPlacement = "p",
-                                minimumValue= 0, 
-                                maximumValue= 50,
-                                width="100%"
-                                )
-               ),
-  br()
-),
-
-chances_fixed = list(
-  br(),
-  radioButtons("chances_fixed", "What are the chances that the defendant is guilty?",
+  radioButtons("guilt_chance", "What are the chances that the defendant is guilty?",
                     choices = c("Certain to be guilty", "About 9,999 chances in 10,000", 
                                 "About 999 chances in 1,000","About 99 chances in 100", 
                                 "About 9 chances in 10", "1 chance in 2 (fifty-fifty chance)",
