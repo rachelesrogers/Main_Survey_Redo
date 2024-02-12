@@ -92,9 +92,10 @@ server <- function(input, output, session) {
   
   questorder <- 
     c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion",
-      "quest_4"="check","quest_5"="hidden_probability","quest_6"="mistakes",
-      "quest_7"="numeric_chance","quest_8"="guilt_chance","quest_9"="consistency",
-      "quest_10"="scientific","quest_11"="comments")
+      "quest_4"="check","quest_5"="def_probability","quest_6"="mistakes",
+      "quest_7"="numeric_chance","quest_8"="def_chance","quest_9"="consistency",
+      "quest_10"="scientific","quest_11"="gun_opinion","quest_12"="gun_probability", 
+      "quest_13"="gun_chance","quest_"="comments")
   
   random_number <- runif(1,0,100)
   start_time <- Sys.time()

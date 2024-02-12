@@ -19,14 +19,23 @@ questions <- list(
     br()
   ),
   
- guilt_opinion = list(
+ gun_opinion = list(
     br(),
     radioButtons(
-      "guilt_opinion", "Do you personally believe that the defendant is guilty of committing the crime?",
+      "gun_opinion", "Do you personally believe that the defendant's gun was used in the crime?",
       c("Yes", "No"), selected=character(0)
     ),
     br()
   ),
+ 
+ guilt_opinion = list(
+   br(),
+   radioButtons(
+     "guilt_opinion", "Do you personally believe that the defendant is guilty of committing the crime?",
+     c("Yes", "No"), selected=character(0)
+   ),
+   br()
+ ),
   
   check = list(
   br(),
@@ -37,15 +46,30 @@ questions <- list(
   br()
   ),
   
-  hidden_probability = list(
+def_probability = list(
   br(),
   tags$head(tags$style('.irs-single {
             visibility: hidden !important;
     }')),
-  sliderInput("hidden_probability",
+  sliderInput("def_probability",
               label = "What would you say is the percent chance that the
                     defendant is the man who fired the shot in the convenience store?",
-              min = 0, max = 100, value = 50,
+              min = 0, max = 100, value = 0,
+              ticks=FALSE,
+              animate=FALSE
+  ),
+  br()
+),
+
+gun_probability = list(
+  br(),
+  tags$head(tags$style('.irs-single {
+            visibility: hidden !important;
+    }')),
+  sliderInput("def_probability",
+              label = "What would you say is the percent chance that the
+                    defendant's gun was used to fire the shot in the convenience store?",
+              min = 0, max = 100, value = 0,
               ticks=FALSE,
               animate=FALSE
   ),
@@ -111,20 +135,32 @@ numeric_chance = list(
                                                   maximumValue=1000000000000))),
   fluidRow(column(4, align="center", p("that the defendant is", style="padding:20px;")),
            column(4,  selectInput("guilt_choice",  " ",
-                                  choices = c("innocent", "guilty"),
+                                  choices = c("guilty", "innocent"),
                                   selected=character(0), width = "200px"))),
   br()
 ),
 
-guilt_chance = list(
+def_chance = list(
   br(),
-  radioButtons("guilt_chance", "What are the chances that the defendant is guilty?",
+  radioButtons("def_chance", "What are the chances that the defendant is guilty?",
                     choices = c("Certain to be guilty", "About 9,999 chances in 10,000", 
                                 "About 999 chances in 1,000","About 99 chances in 100", 
                                 "About 9 chances in 10", "1 chance in 2 (fifty-fifty chance)",
                                 "About 1 chance in 10","About 1 chance in 100","About 1 chance in 1,000",
                                 "About 1 chance in 10,000", "Impossible that he is guilty"),
                     selected = character(0)),
+  br()
+),
+
+gun_chance = list(
+  br(),
+  radioButtons("gun_chance", "What are the chances that the defendant's gun was used in the crime?",
+               choices = c("Certain that gun was used", "About 9,999 chances in 10,000", 
+                           "About 999 chances in 1,000","About 99 chances in 100", 
+                           "About 9 chances in 10", "1 chance in 2 (fifty-fifty chance)",
+                           "About 1 chance in 10","About 1 chance in 100","About 1 chance in 1,000",
+                           "About 1 chance in 10,000", "Impossible that gun was used"),
+               selected = character(0)),
   br()
 ),
 
