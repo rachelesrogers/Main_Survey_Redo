@@ -169,6 +169,52 @@ comments = list(
   textInput("comments", "Do you have any thoughts about the study
                               that you would like to share?", value = ""),
   br()
+),
+
+#################### Algorithm Questions #############################
+
+alg_consistency = list(
+  br(),
+  radioButtons("alg_consistency", 
+               "If the algorithm were re-run on the same bullet comparison, how
+many times do you believe the algorithm would agree with these results?",
+               choices = c("All runs", "About 9,999 runs in 10,000", 
+                           "About 999 runs in 1,000","About 99 runs in 100", 
+                           "About 9 runs in 10", "1 examiner in 2 (half of the runs)",
+                           "About 1 run in 10","About 1 run in 100","About 1 run in 1,000",
+                           "About 1 run in 10,000", "No runs"),
+               selected = character(0)),
+  br()
+), 
+
+alg_mistakes = list(
+  br(),
+  radioButtons("alg_mistakes", 
+               "How often do you think the algorithm makes mistakes?",
+               choices = c("Always makes mistakes", "About 9,999 comparisons in 10,000", 
+                           "About 999 comparisons in 1,000","About 99 comparisons in 100", 
+                           "About 9 comparisons in 10", "1 comparison in 2 (half of comparisons)",
+                           "About 1 comparison in 10","About 1 comparison in 100","About 1 comparison in 1,000",
+                           "About 1 comparison in 10,000", "Never makes mistakes"),
+               selected = character(0)),
+  br()
+), 
+
+alg_scientific = list(
+  br(),
+  tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max, .irs-single {
+            visibility: hidden !important;
+    }')),
+  fluidRow(column(2, align="center", p("unscientific", 
+                                       style="padding:20px; margin-top:33px")),
+           column(8,    sliderInput("alg_scientific",
+                                    label = "How scientific did you find the algorithm comparison?",
+                                    min = 0, max = 100, value = 50,
+                                    ticks=FALSE,
+                                    animate=FALSE)),
+           column(2, align="center", p("scientific", 
+                                       style="padding:20px; margin-top:33px"))),
+  br()
 )
 
 )
