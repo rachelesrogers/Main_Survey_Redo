@@ -110,7 +110,7 @@ consistency = list(
   br(),
   radioButtons("consistency", 
                "If other examiners were asked to make the same bullet comparison,
-               how many do you believe would agree with the firearms examiner?",
+               how many do you believe would agree with the firearms examiner's conclusion?",
                choices = c("All examiners", "About 9,999 examiners in 10,000", 
                            "About 999 examiners in 1,000","About 99 examiners in 100", 
                            "About 9 examiners in 10", "1 examiner in 2 (half of examiners)",

@@ -59,12 +59,12 @@ ui <- fluidPage(
                    wellPanel(style="margin-top:290px", p(uiOutput("testimony"))),
                    column(12, actionButton("testimonypage", "Next"), align="center"))),
   conditionalPanel(condition="input.testimonypage == output.testpages & 
-                   input.questionpage < 11",
+                   input.questionpage < 14",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", uiOutput("finalquest"),
                    column(12, actionButton("questionpage", "Next"), align="center"),
                    br()))),
-  conditionalPanel(condition="input.questionpage ==11",
+  conditionalPanel(condition="input.questionpage ==14",
                    wellPanel(style="margin-top:100px","Completion Code: ABCD"))
   
 )
@@ -95,7 +95,7 @@ server <- function(input, output, session) {
       "quest_4"="check","quest_5"="def_probability","quest_6"="mistakes",
       "quest_7"="numeric_chance","quest_8"="def_chance","quest_9"="consistency",
       "quest_10"="scientific","quest_11"="gun_opinion","quest_12"="gun_probability", 
-      "quest_13"="gun_chance","quest_"="comments")
+      "quest_13"="gun_chance","quest_14"="comments")
   
   random_number <- runif(1,0,100)
   start_time <- Sys.time()
@@ -118,7 +118,7 @@ server <- function(input, output, session) {
   
   observe({
     updateProgressBar(session = session, id = "progress", 
-                      value = (counter()/(servpages() + 15))*100)
+                      value = (counter()/(servpages() + 18))*100)
   })
 
   output$informed_consent <- renderUI(HTML(consenttxt[1,]))
