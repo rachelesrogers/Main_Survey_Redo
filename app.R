@@ -44,7 +44,7 @@ ui <- fluidPage(
               column(12, actionButton("informed", "I Agree"), align="center"),
               br()))
     ),
-  conditionalPanel(condition="input.demopage==2 & input.questionpage < 10",
+  conditionalPanel(condition="input.demopage==2 & input.questionpage < output.num_quest",
                    wellPanel(style="background:url(Notebook.jpg); 
                              position: fixed; width: 98%; z-index:1; margin-top:70px", 
                              textAreaInput("notepad","Take Notes Here", rows=5, value=""),)),
@@ -59,12 +59,12 @@ ui <- fluidPage(
                    wellPanel(style="margin-top:290px", p(uiOutput("testimony"))),
                    column(12, actionButton("testimonypage", "Next"), align="center"))),
   conditionalPanel(condition="input.testimonypage == output.testpages & 
-                   input.questionpage < 14",
+                   input.questionpage < output.num_quest",
                    column(width=8, offset=2,
                    wellPanel(style="margin-top:290px", uiOutput("finalquest"),
                    column(12, actionButton("questionpage", "Next"), align="center"),
                    br()))),
-  conditionalPanel(condition="input.questionpage ==14",
+  conditionalPanel(condition="input.questionpage == output.num_quest",
                    wellPanel(style="margin-top:100px","Completion Code: ABCD"))
   
 )
@@ -97,6 +97,10 @@ server <- function(input, output, session) {
       "quest_10"="scientific","quest_11"="gun_opinion","quest_12"="gun_probability", 
       "quest_13"="gun_chance","quest_14"="comments")
   
+  numquest <- length(questorder)
+  output$num_quest <- reactive(length(questorder))
+  outputOptions(output, "num_quest", suspendWhenHidden = FALSE)
+  
   random_number <- runif(1,0,100)
   start_time <- Sys.time()
   answer <- reactiveVal()
@@ -118,7 +122,7 @@ server <- function(input, output, session) {
   
   observe({
     updateProgressBar(session = session, id = "progress", 
-                      value = (counter()/(servpages() + 18))*100)
+                      value = (counter()/(servpages() + 4 + numquest))*100)
   })
 
   output$informed_consent <- renderUI(HTML(consenttxt[1,]))
