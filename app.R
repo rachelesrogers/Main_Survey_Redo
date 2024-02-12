@@ -11,7 +11,6 @@ source("Questions.R")
 
 consenttxt <- read.table("Informed_Consent.txt")
 testtxt<- read.csv("Combined_Testimony_Formatted.csv")
-question_order<- read.csv("question_order.csv")
 
 # --- Define UI -------
 ui <- fluidPage(
@@ -87,15 +86,24 @@ server <- function(input, output, session) {
   outputOptions(output, "testpages", suspendWhenHidden = FALSE)
   picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
   conclusion <- sample(c("Match", "NoMatch"),1, prob=c(0.5, 0.5))
-  # questorder <- c(c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion"),
-  #                      question_order[sample(nrow(question_order),1),], c("quest_11"="comments"))
-  
-  questorder <- 
-    c("quest_1"="convict","quest_2"="def_comment","quest_3"="guilt_opinion",
-      "quest_4"="check","quest_5"="def_probability","quest_6"="mistakes",
-      "quest_7"="numeric_chance","quest_8"="def_chance","quest_9"="consistency",
-      "quest_10"="scientific","quest_11"="gun_opinion","quest_12"="gun_probability", 
-      "quest_13"="gun_chance","quest_14"="comments")
+
+  if (algorithm == "Yes"){
+    questorder <- c(c("convict","def_comment","guilt_opinion"),
+                    sample(c("check", "def_probability", "mistakes",
+                               "numeric_chance", "def_chance", "consistency",
+                               "scientific", "gun_opinion", "gun_probability", 
+                               "gun_chance", "alg_consistency", "alg_mistakes",
+                             "alg_scientific")),
+                    c("comments"))
+  } else if (algorithm == "No"){
+    questorder <- c(c("convict","def_comment","guilt_opinion"),
+                    sample(c("check", "def_probability", "mistakes",
+                             "numeric_chance", "def_chance", "consistency",
+                             "scientific", "gun_opinion", "gun_probability", 
+                             "gun_chance")),
+                    c("comments"))
+  }
+
   
   numquest <- length(questorder)
   output$num_quest <- reactive(length(questorder))

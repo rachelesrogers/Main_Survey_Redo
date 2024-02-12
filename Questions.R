@@ -48,7 +48,9 @@ questions <- list(
   
 def_probability = list(
   br(),
-  tags$head(tags$style('.irs-single {
+  tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max {
+            visibility: visible !important;
+    } .irs-single {
             visibility: hidden !important;
     }')),
   sliderInput("def_probability",
