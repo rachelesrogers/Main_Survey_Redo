@@ -70,7 +70,7 @@ ui <- fluidPage(
 
 # --- server ------
 
- # pool <- dbPool(drv = RSQLite::SQLite(), dbname = "main_redo_database.sqlite")
+ pool <- dbPool(drv = RSQLite::SQLite(), dbname = "main_redo_database.sqlite")
 
 server <- function(input, output, session) {
   
@@ -84,6 +84,7 @@ server <- function(input, output, session) {
       servpages <- reactive(14)
                           }
   outputOptions(output, "testpages", suspendWhenHidden = FALSE)
+  
   picture <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
   conclusion <- sample(c("Match", "NoMatch"),1, prob=c(0.5, 0.5))
 
@@ -153,15 +154,15 @@ server <- function(input, output, session) {
     ))
   })
   
-  # observeEvent(input$informed,{
-  #              con <- localCheckout(pool, env = parent.frame())
-  #              dbAppendTable(con, "consent_page", consentans())
-  #              })
+  observeEvent(input$informed,{
+               con <- localCheckout(pool, env = parent.frame())
+               dbAppendTable(con, "consent_page", consentans())
+               })
   
   demo1ans <- reactive({
     return(data.frame(
       prolificid = input$prolificID,
-      race = input$race,
+      race = paste(input$race, collapse = ", "),
       gender = input$gender,
       age = input$age,
       income = input$income,
@@ -224,14 +225,14 @@ server <- function(input, output, session) {
   ))
   
   
-  # observeEvent(input$demopage,{
-  #   con <- localCheckout(pool, env = parent.frame())
-  #   if (input$demopage ==1){
-  #   dbAppendTable(con, "demographics1", demo1ans())} else if (input$demopage ==2){
-  #     dbAppendTable(con, "demographics2", demo2ans())
-  #   }
-  #   question_verification(0)
-  # })
+  observeEvent(input$demopage,{
+    con <- localCheckout(pool, env = parent.frame())
+    if (input$demopage ==1){
+    dbAppendTable(con, "demographics1", demo1ans())} else if (input$demopage ==2){
+      dbAppendTable(con, "demographics2", demo2ans())
+    }
+    question_verification(0)
+  })
   
   noteans <- reactive({
     return(data.frame(
@@ -247,34 +248,28 @@ server <- function(input, output, session) {
     ))
   })
   
-  # observeEvent(input$testimonypage,{
-  #   con <- localCheckout(pool, env = parent.frame())
-  #   dbAppendTable(con, "notepad", noteans())
-  # })
+  observeEvent(input$testimonypage,{
+    con <- localCheckout(pool, env = parent.frame())
+    dbAppendTable(con, "notepad", noteans())
+  })
   
-  # observeEvent(input$convict | input$def_comment | input$guilt_opinion | 
-  #                input$check | input$evidence_strength | input$hidden_probability |
-  #                input$visible_probability | input$chances_fixed, {
-  #                  ans_temp <- input[[names(questions)[input$questionpage + 1]]]
-  #                  answer(ans_temp)
-  #                })
   observeEvent(input$convict, {
     ans_temp <- input$convict
     answer(ans_temp)
   })
   btn_status(c("convict"))
   
-  observeEvent(input$comments, {
-    ans_temp <- input$comments
-    answer(ans_temp)
-  })
-  btn_status(c("comments"))
-  
   observeEvent(input$def_comment, {
     ans_temp <- input$def_comment
     answer(ans_temp)
   })
   btn_status(c("def_comment"))
+  
+  observeEvent(input$gun_opinion, {
+    ans_temp <- input$gun_opinion
+    answer(ans_temp)
+  })
+  btn_status(c("gun_opinion"))
   
   observeEvent(input$guilt_opinion, {
     ans_temp <- input$guilt_opinion
@@ -288,29 +283,71 @@ server <- function(input, output, session) {
   })
   btn_status(c("check"))
   
-  observeEvent(input$evidence_strength, {
-    ans_temp <- input$evidence_strength
+  observeEvent(input$def_probability, {
+    ans_temp <- input$def_probability
     answer(ans_temp)
   })
-  btn_status(c("evidence_strength"))
+  btn_status(c("def_probability"))
   
-  observeEvent(input$hidden_probability, {
-    ans_temp <- input$hidden_probability
+  observeEvent(input$gun_probability, {
+    ans_temp <- input$gun_probability
     answer(ans_temp)
   })
-  btn_status(c("hidden_probability"))
+  btn_status(c("gun_probability"))
   
-  observeEvent(input$visible_probability, {
-    ans_temp <- input$visible_probability
+  observeEvent(input$scientific, {
+    ans_temp <- input$scientific
     answer(ans_temp)
   })
-  btn_status(c("visible_probability"))
+  btn_status(c("scientific"))
   
-  observeEvent(input$chances_fixed, {
-    ans_temp <- input$chances_fixed
+  observeEvent(input$mistakes, {
+    ans_temp <- input$mistakes
     answer(ans_temp)
   })
-  btn_status(c("chances_fixed"))
+  btn_status(c("mistakes"))
+  
+  observeEvent(input$consistency, {
+    ans_temp <- input$consistency
+    answer(ans_temp)
+  })
+  btn_status(c("consistency"))
+  
+  observeEvent(input$def_chance, {
+    ans_temp <- input$def_chance
+    answer(ans_temp)
+  })
+  btn_status(c("def_chance"))
+  
+  observeEvent(input$gun_chance, {
+    ans_temp <- input$gun_chance
+    answer(ans_temp)
+  })
+  btn_status(c("gun_chance"))
+  
+  observeEvent(input$comments, {
+    ans_temp <- input$comments
+    answer(ans_temp)
+  })
+  btn_status(c("comments"))
+  
+  observeEvent(input$alg_consistency, {
+    ans_temp <- input$alg_consistency
+    answer(ans_temp)
+  })
+  btn_status(c("alg_consistency"))
+  
+  observeEvent(input$alg_mistakes, {
+    ans_temp <- input$alg_mistakes
+    answer(ans_temp)
+  })
+  btn_status(c("alg_mistakes"))
+  
+  observeEvent(input$alg_scientific, {
+    ans_temp <- input$alg_scientific
+    answer(ans_temp)
+  })
+  btn_status(c("alg_scientific"))
   
   observeEvent(input$innocent_bet, {
     ans_temp <- input$innocent_bet
@@ -364,11 +401,11 @@ server <- function(input, output, session) {
     ))
   })
   
-  # observeEvent(input$questionpage,{
-  #   con <- localCheckout(pool, env = parent.frame())
-  #   dbAppendTable(con, "survey_responses", responseans())
-  #   question_verification(0)
-  # })
+  observeEvent(input$questionpage,{
+    con <- localCheckout(pool, env = parent.frame())
+    dbAppendTable(con, "survey_responses", responseans())
+    question_verification(0)
+  })
   
   observe({
     shinyjs::toggleState("questionpage", question_verification() == 1)

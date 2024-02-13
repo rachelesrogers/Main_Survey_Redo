@@ -68,7 +68,7 @@ gun_probability = list(
   tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max {
             visibility: visible !important;
     } .irs-single {visibility: hidden !important;}')),
-  sliderInput("def_probability",
+  sliderInput("gun_probability",
               label = "What would you say is the percent chance that the
                     defendant's gun was used to fire the shot in the convenience store?",
               min = 0, max = 100, value = 0,
