@@ -88,7 +88,7 @@ margin-right: auto;
 }
 
 .algorithm {
-	background: #fcf03b;
+	background: #fff785;
 	text-align: right;
 	margin-right:0;
 	margin-left: auto;
@@ -102,7 +102,7 @@ margin-right: auto;
 	width: 0;
 	height: 0;
 	border: 20px solid transparent;
-	border-left-color: #fcf03b;
+	border-left-color: #fff785;
 	border-right: 0;
 	border-bottom: 0;
 	margin-top: -10px;
