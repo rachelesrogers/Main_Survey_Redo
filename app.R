@@ -115,6 +115,7 @@ server <- function(input, output, session) {
   answer <- reactiveVal()
   question <- reactiveVal()
   question_verification <- reactiveVal(0)
+  prob_counter <- reactiveVal(0)
   
   subset_testimony<-testtxt %>% 
     subset((Conclusion=="All"|Conclusion==conclusion) &
@@ -293,22 +294,46 @@ server <- function(input, output, session) {
     ans_temp <- input$def_probability
     answer(ans_temp)
     question("def_probability")
+    
+    newcount <- prob_counter() + 1
+    prob_counter(newcount)
+    if (prob_counter()==1){
+      question_verification(0)
+    } else if (prob_counter() > 1){
+      question_verification(1)
+      prob_counter(0)
+    }
   })
-  btn_status(c("def_probability"))
   
   observeEvent(input$gun_probability, {
     ans_temp <- input$gun_probability
     answer(ans_temp)
     question("gun_probability")
+    
+    newcount <- prob_counter() + 1
+    prob_counter(newcount)
+    if (prob_counter()==1){
+      question_verification(0)
+    } else if (prob_counter() > 1){
+      question_verification(1)
+      prob_counter(0)
+    }
   })
-  btn_status(c("gun_probability"))
   
   observeEvent(input$scientific, {
     ans_temp <- input$scientific
     answer(ans_temp)
     question("scientific")
+    
+    newcount <- prob_counter() + 1
+    prob_counter(newcount)
+    if (prob_counter()==1){
+      question_verification(0)
+    } else if (prob_counter() > 1){
+      question_verification(1)
+      prob_counter(0)
+    }
   })
-  btn_status(c("scientific"))
   
   observeEvent(input$mistakes, {
     ans_temp <- input$mistakes
@@ -363,8 +388,15 @@ server <- function(input, output, session) {
     ans_temp <- input$alg_scientific
     answer(ans_temp)
     question("alg_scientific")
+    newcount <- prob_counter() + 1
+    prob_counter(newcount)
+    if (prob_counter()==1){
+      question_verification(0)
+    } else if (prob_counter() > 1){
+      question_verification(1)
+      prob_counter(0)
+    }
   })
-  btn_status(c("alg_scientific"))
   
   observeEvent(input$innocent_bet, {
     ans_temp <- input$innocent_bet
