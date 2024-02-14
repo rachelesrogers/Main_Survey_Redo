@@ -45,8 +45,7 @@ questions <- list(
   ),
   br()
   ),
-  ## Add a check to make sure person moves the scale - 
-  ## make sure it's been updated at least once
+
 def_probability = list(
   br(),
   tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max {
