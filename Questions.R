@@ -45,7 +45,8 @@ questions <- list(
   ),
   br()
   ),
-  
+  ## Add a check to make sure person moves the scale - 
+  ## make sure it's been updated at least once
 def_probability = list(
   br(),
   tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max {
@@ -56,7 +57,7 @@ def_probability = list(
   sliderInput("def_probability",
               label = "What would you say is the percent chance that the
                     defendant is the man who fired the shot in the convenience store?",
-              min = 0, max = 100, value = 0,
+              min = 0, max = 100, value = 50,
               ticks=FALSE,
               animate=FALSE
   ),
@@ -71,7 +72,7 @@ gun_probability = list(
   sliderInput("gun_probability",
               label = "What would you say is the percent chance that the
                     defendant's gun was used to fire the shot in the convenience store?",
-              min = 0, max = 100, value = 0,
+              min = 0, max = 100, value = 50,
               ticks=FALSE,
               animate=FALSE
   ),
@@ -135,10 +136,8 @@ numeric_chance = list(
                    shinyWidgets::autonumericInput("like_denom", 
                                                   "", value=NA, minimumValue=1, 
                                                   maximumValue=1000000000000))),
-  fluidRow(column(4, align="center", p("that the defendant is", style="padding:20px;")),
-           column(4,  selectInput("guilt_choice",  " ",
-                                  choices = c("guilty", "innocent"),
-                                  selected=character(0), width = "200px"))),
+  fluidRow(column(8, align="center", p("that the defendant is guilty", 
+                                       style="padding:20px;"))),
   br()
 ),
 
@@ -178,13 +177,13 @@ comments = list(
 alg_consistency = list(
   br(),
   radioButtons("alg_consistency", 
-               "If the algorithm were re-run on the same bullet comparison, how
-many times do you believe the algorithm would agree with these results?",
-               choices = c("All runs", "About 9,999 runs in 10,000", 
-                           "About 999 runs in 1,000","About 99 runs in 100", 
-                           "About 9 runs in 10", "1 examiner in 2 (half of the runs)",
-                           "About 1 run in 10","About 1 run in 100","About 1 run in 1,000",
-                           "About 1 run in 10,000", "No runs"),
+               "What are the chances that a different algorithm would come 
+               to the same conclusion?",
+               choices = c("Guaranteed to reach the same conclusion", "About 9,999 chances in 10,000", 
+                           "About 999 chances in 1,000","About 99 chances in 100", 
+                           "About 9 chances in 10", "1 chances in 2 (half of the time)",
+                           "About 1 chance in 10","About 1 chance in 100","About 1 chance in 1,000",
+                           "About 1 chance in 10,000", "Impossible to reach the same conclusion"),
                selected = character(0)),
   br()
 ), 

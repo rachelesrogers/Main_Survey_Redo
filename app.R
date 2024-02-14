@@ -113,6 +113,7 @@ server <- function(input, output, session) {
   random_number <- runif(1,0,100)
   start_time <- Sys.time()
   answer <- reactiveVal()
+  question <- reactiveVal()
   question_verification <- reactiveVal(0)
   
   subset_testimony<-testtxt %>% 
@@ -256,119 +257,133 @@ server <- function(input, output, session) {
   observeEvent(input$convict, {
     ans_temp <- input$convict
     answer(ans_temp)
+    question("convict")
   })
   btn_status(c("convict"))
   
   observeEvent(input$def_comment, {
     ans_temp <- input$def_comment
     answer(ans_temp)
+    question("def_comment")
   })
   btn_status(c("def_comment"))
   
   observeEvent(input$gun_opinion, {
     ans_temp <- input$gun_opinion
     answer(ans_temp)
+    question("gun_opinion")
   })
   btn_status(c("gun_opinion"))
   
   observeEvent(input$guilt_opinion, {
     ans_temp <- input$guilt_opinion
     answer(ans_temp)
+    question("guilt_opinion")
   })
   btn_status(c("guilt_opinion"))
   
   observeEvent(input$check, {
     ans_temp <- input$check
     answer(ans_temp)
+    question("check")
   })
   btn_status(c("check"))
   
   observeEvent(input$def_probability, {
     ans_temp <- input$def_probability
     answer(ans_temp)
+    question("def_probability")
   })
   btn_status(c("def_probability"))
   
   observeEvent(input$gun_probability, {
     ans_temp <- input$gun_probability
     answer(ans_temp)
+    question("gun_probability")
   })
   btn_status(c("gun_probability"))
   
   observeEvent(input$scientific, {
     ans_temp <- input$scientific
     answer(ans_temp)
+    question("scientific")
   })
   btn_status(c("scientific"))
   
   observeEvent(input$mistakes, {
     ans_temp <- input$mistakes
     answer(ans_temp)
+    question("mistakes")
   })
   btn_status(c("mistakes"))
   
   observeEvent(input$consistency, {
     ans_temp <- input$consistency
     answer(ans_temp)
+    question("consistency")
   })
   btn_status(c("consistency"))
   
   observeEvent(input$def_chance, {
     ans_temp <- input$def_chance
     answer(ans_temp)
+    question("def_chance")
   })
   btn_status(c("def_chance"))
   
   observeEvent(input$gun_chance, {
     ans_temp <- input$gun_chance
     answer(ans_temp)
+    question("gun_chance")
   })
   btn_status(c("gun_chance"))
   
   observeEvent(input$comments, {
     ans_temp <- input$comments
     answer(ans_temp)
+    question("comments")
   })
   btn_status(c("comments"))
   
   observeEvent(input$alg_consistency, {
     ans_temp <- input$alg_consistency
     answer(ans_temp)
+    question("alg_consistency")
   })
   btn_status(c("alg_consistency"))
   
   observeEvent(input$alg_mistakes, {
     ans_temp <- input$alg_mistakes
     answer(ans_temp)
+    question("alg_mistakes")
   })
   btn_status(c("alg_mistakes"))
   
   observeEvent(input$alg_scientific, {
     ans_temp <- input$alg_scientific
     answer(ans_temp)
+    question("alg_scientific")
   })
   btn_status(c("alg_scientific"))
   
   observeEvent(input$innocent_bet, {
     ans_temp <- input$innocent_bet
     answer(ans_temp)
+    question("innocent_bet")
   })
   btn_status(c("innocent_bet"))
   
   observeEvent(input$guilt_bet, {
     ans_temp <- input$guilt_bet
     answer(ans_temp)
+    question("guilt_bet")
   })
   btn_status(c("guilt_bet"))
   
-  observeEvent(input$guilt_choice,{
-    ans_temp <- paste0(input$guilt_choice, ",", input$like_num,",", input$like_denom)
-    answer(ans_temp)
-  })
-  
     observeEvent(input$like_num | input$like_denom,{
-    ans_temp <- paste0(input$guilt_choice, ",", input$like_num,",", input$like_denom)
+    ans_temp <- paste0(input$like_num,",", input$like_denom)
     answer(ans_temp)
+    question("numeric_chance")
     if (isTruthy(input$like_num & input$like_denom)){
       if (input$like_num > input$like_denom){
         question_verification(0)
@@ -393,7 +408,7 @@ server <- function(input, output, session) {
       time = Sys.time(),
       randomnumber = random_number,
       start_time = start_time,
-      question = questorder[[input$questionpage]],
+      question = question(),
       answer = answer(),
       conclusion = conclusion,
       algorithm = algorithm,
