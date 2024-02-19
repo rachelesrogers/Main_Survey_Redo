@@ -9,6 +9,8 @@ library(pool)
 source("Demographics.R")
 source("Questions.R")
 
+completionCode <- "ABCD" # Replace with prolific completion code
+
 consenttxt <- read.table("Informed_Consent.txt")
 testtxt<- read.csv("Combined_Testimony_Formatted.csv")
 
@@ -64,7 +66,7 @@ ui <- fluidPage(
                    column(12, actionButton("questionpage", "Next"), align="center"),
                    br()))),
   conditionalPanel(condition="input.questionpage == output.num_quest",
-                   wellPanel(style="margin-top:100px","Completion Code: ABCD"))
+                   wellPanel(style="margin-top:100px",sprintf("Completion Code: %s", completionCode)))
   
 )
 
@@ -110,7 +112,7 @@ server <- function(input, output, session) {
   output$num_quest <- reactive(length(questorder))
   outputOptions(output, "num_quest", suspendWhenHidden = FALSE)
   
-  random_number <- runif(1,0,100)
+  random_number <- runif(1,0,100) # XXX Document the purpose of this...
   start_time <- Sys.time()
   answer <- reactiveVal()
   question <- reactiveVal()
