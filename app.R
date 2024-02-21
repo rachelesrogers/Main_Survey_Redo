@@ -303,7 +303,6 @@ server <- function(input, output, session) {
       question_verification(0)
     } else if (prob_counter() > 1){
       question_verification(1)
-      prob_counter(0)
     }
   })
   
@@ -318,7 +317,6 @@ server <- function(input, output, session) {
       question_verification(0)
     } else if (prob_counter() > 1){
       question_verification(1)
-      prob_counter(0)
     }
   })
   
@@ -333,7 +331,6 @@ server <- function(input, output, session) {
       question_verification(0)
     } else if (prob_counter() > 1){
       question_verification(1)
-      prob_counter(0)
     }
   })
   
@@ -396,7 +393,6 @@ server <- function(input, output, session) {
       question_verification(0)
     } else if (prob_counter() > 1){
       question_verification(1)
-      prob_counter(0)
     }
   })
   
@@ -454,6 +450,7 @@ server <- function(input, output, session) {
     con <- localCheckout(pool, env = parent.frame())
     dbAppendTable(con, "survey_responses", responseans())
     question_verification(0)
+    prob_counter(0)
   })
   
   observe({
