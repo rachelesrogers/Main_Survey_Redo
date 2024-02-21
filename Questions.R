@@ -1,6 +1,5 @@
 questions <- list(
  convict= list(
-    br(),
     radioButtons(
       "convict",
       "The State has the burden of proving beyond a reasonable doubt that the
@@ -9,45 +8,35 @@ questions <- list(
                       committed the alleged crime, you must find the defendant not guilty.
                      Would you convict this defendant, based on the evidence that you have heard?",
       c("Yes", "No"), selected=character(0)
-    ),
-    br()
+    )
   ),
   
   def_comment = list(
-    br(),
-    textInput("def_comment", "After reading this information, what do you think about the defendant?", value=""),
-    br()
+    textInput("def_comment", "After reading this information, what do you think about the defendant?", value="")
   ),
   
  gun_opinion = list(
-    br(),
     radioButtons(
       "gun_opinion", "Do you personally believe that the defendant's gun was used in the crime?",
       c("Yes", "No"), selected=character(0)
+    )  
     ),
-    br()
-  ),
  
  guilt_opinion = list(
-   br(),
    radioButtons(
      "guilt_opinion", "Do you personally believe that the defendant is guilty of committing the crime?",
      c("Yes", "No"), selected=character(0)
-   ),
-   br()
+   )
  ),
   
   check = list(
-  br(),
   radioButtons(
     "check", "What caliber bullet was recovered from the crime scene?",
     c("9mm", "22mm", "Rifle slug"), selected=character(0)
-  ),
-  br()
+  )
   ),
 
 def_probability = list(
-  br(),
   tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max {
             visibility: visible !important;
     } .irs-single {
@@ -59,12 +48,10 @@ def_probability = list(
               min = 0, max = 100, value = 50,
               ticks=FALSE,
               animate=FALSE
-  ),
-  br()
+  )
 ),
 
 gun_probability = list(
-  br(),
   tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max {
             visibility: visible !important;
     } .irs-single {visibility: hidden !important;}')),
@@ -74,12 +61,10 @@ gun_probability = list(
               min = 0, max = 100, value = 50,
               ticks=FALSE,
               animate=FALSE
-  ),
-  br()
+  )
 ),
 
 scientific = list(
-  br(),
   tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max, .irs-single {
             visibility: hidden !important;
     }')),
@@ -91,12 +76,10 @@ scientific = list(
                                     ticks=FALSE,
                                     animate=FALSE)),
            column(2, align="center", p("scientific", 
-                                       style="padding:20px; margin-top:33px"))),
-  br()
+                                       style="padding:20px; margin-top:33px")))
 ),
 
 mistakes = list(
-  br(),
   radioButtons("mistakes", 
                "How often do you think the firearms examiner makes mistakes?",
                choices = c("Always makes mistakes", "About 9,999 comparisons in 10,000", 
@@ -104,12 +87,10 @@ mistakes = list(
                            "About 9 comparisons in 10", "1 comparison in 2 (half of comparisons)",
                            "About 1 comparison in 10","About 1 comparison in 100","About 1 comparison in 1,000",
                            "About 1 comparison in 10,000", "Never makes mistakes"),
-               selected = character(0)),
-  br()
+               selected = character(0))
 ), 
 
 consistency = list(
-  br(),
   radioButtons("consistency", 
                "If other examiners were asked to make the same bullet comparison,
                how many do you believe would agree with the firearms examiner's conclusion?",
@@ -118,12 +99,10 @@ consistency = list(
                            "About 9 examiners in 10", "1 examiner in 2 (half of examiners)",
                            "About 1 examiner in 10","About 1 examiner in 100","About 1 examiner in 1,000",
                            "About 1 examiner in 10,000", "No examiner"),
-               selected = character(0)),
-  br()
+               selected = character(0))
 ), 
 
 numeric_chance = list(
-  br(),
                    fluidRow(
                      column(4,align="center", p("There is about", style="padding:20px;")),
                      column(2,
@@ -136,45 +115,37 @@ numeric_chance = list(
                                                   "", value=NA, minimumValue=1, 
                                                   maximumValue=1000000000000))),
   fluidRow(column(8, align="center", p("that the defendant is guilty", 
-                                       style="padding:20px;"))),
-  br()
+                                       style="padding:20px;")))
 ),
 
 def_chance = list(
-  br(),
   radioButtons("def_chance", "What are the chances that the defendant is guilty?",
                     choices = c("Certain to be guilty", "About 9,999 chances in 10,000", 
                                 "About 999 chances in 1,000","About 99 chances in 100", 
                                 "About 9 chances in 10", "1 chance in 2 (fifty-fifty chance)",
                                 "About 1 chance in 10","About 1 chance in 100","About 1 chance in 1,000",
                                 "About 1 chance in 10,000", "Impossible that he is guilty"),
-                    selected = character(0)),
-  br()
+                    selected = character(0))
 ),
 
 gun_chance = list(
-  br(),
   radioButtons("gun_chance", "What are the chances that the defendant's gun was used in the crime?",
                choices = c("Certain that gun was used", "About 9,999 chances in 10,000", 
                            "About 999 chances in 1,000","About 99 chances in 100", 
                            "About 9 chances in 10", "1 chance in 2 (fifty-fifty chance)",
                            "About 1 chance in 10","About 1 chance in 100","About 1 chance in 1,000",
                            "About 1 chance in 10,000", "Impossible that gun was used"),
-               selected = character(0)),
-  br()
+               selected = character(0))
 ),
 
 comments = list(
-  br(),
   textInput("comments", "Do you have any thoughts about the study
-                              that you would like to share?", value = ""),
-  br()
+                              that you would like to share?", value = "")
 ),
 
 #################### Algorithm Questions #############################
 
 alg_consistency = list(
-  br(),
   radioButtons("alg_consistency", 
                "What are the chances that a different algorithm would come 
                to the same conclusion?",
@@ -183,12 +154,10 @@ alg_consistency = list(
                            "About 9 chances in 10", "1 chances in 2 (half of the time)",
                            "About 1 chance in 10","About 1 chance in 100","About 1 chance in 1,000",
                            "About 1 chance in 10,000", "Impossible to reach the same conclusion"),
-               selected = character(0)),
-  br()
+               selected = character(0))
 ), 
 
 alg_mistakes = list(
-  br(),
   radioButtons("alg_mistakes", 
                "How often do you think the algorithm makes mistakes?",
                choices = c("Always makes mistakes", "About 9,999 comparisons in 10,000", 
@@ -196,12 +165,10 @@ alg_mistakes = list(
                            "About 9 comparisons in 10", "1 comparison in 2 (half of comparisons)",
                            "About 1 comparison in 10","About 1 comparison in 100","About 1 comparison in 1,000",
                            "About 1 comparison in 10,000", "Never makes mistakes"),
-               selected = character(0)),
-  br()
+               selected = character(0))
 ), 
 
 alg_scientific = list(
-  br(),
   tags$head(tags$style('.irs-from, .irs-to, .irs-min, .irs-max, .irs-single {
             visibility: hidden !important;
     }')),
@@ -213,8 +180,7 @@ alg_scientific = list(
                                     ticks=FALSE,
                                     animate=FALSE)),
            column(2, align="center", p("scientific", 
-                                       style="padding:20px; margin-top:33px"))),
-  br()
+                                       style="padding:20px; margin-top:33px")))
 )
 
 )
