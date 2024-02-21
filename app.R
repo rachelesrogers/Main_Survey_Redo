@@ -112,7 +112,8 @@ server <- function(input, output, session) {
   output$num_quest <- reactive(length(questorder))
   outputOptions(output, "num_quest", suspendWhenHidden = FALSE)
   
-  random_number <- runif(1,0,100) # XXX Document the purpose of this...
+  # Assigning a non-identifiable random number to match participants across databases
+  random_number <- runif(1,0,100) 
   start_time <- Sys.time()
   answer <- reactiveVal()
   question <- reactiveVal()
