@@ -114,7 +114,7 @@ numeric_chance = list(
                    shinyWidgets::autonumericInput("like_denom", 
                                                   "", value=NA, minimumValue=1, 
                                                   maximumValue=1000000000000))),
-  fluidRow(column(8, align="center", p("that the defendant is guilty", 
+  fluidRow(column(4, align="center", p("that the defendant is guilty", 
                                        style="padding:20px;")))
 ),
 
