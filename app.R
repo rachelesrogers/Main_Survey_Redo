@@ -256,6 +256,8 @@ server <- function(input, output, session) {
   observeEvent(input$testimonypage,{
     con <- localCheckout(pool, env = parent.frame())
     dbAppendTable(con, "notepad", noteans())
+    hide("testimonypage")
+    delay(2000, show("testimonypage"))
   })
   
   observeEvent(input$convict, {
