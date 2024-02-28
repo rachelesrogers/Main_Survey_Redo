@@ -2,7 +2,7 @@ library(DBI)
 library(RSQLite)
 library(tidyverse)
 
-redo_dataset <- dbConnect(RSQLite::SQLite(), "redo_database.sqlite")
+redo_dataset <- dbConnect(RSQLite::SQLite(), "main_redo_database.sqlite")
 
 responses <- dbGetQuery(redo_dataset, "SELECT * FROM survey_responses")
 
