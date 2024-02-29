@@ -18,53 +18,53 @@ testtxt<- read.csv("Combined_Testimony_Formatted.csv")
 ui <- fluidPage(
   title = "Jury Study",
   style="font-size:20px",
-                useShinyjs(),
-                tags$head(
-                  tags$style(
-                    HTML(".shiny-notification {
+  useShinyjs(),
+  tags$head(
+    tags$style(
+      HTML(".shiny-notification {
              position:fixed;
              top: calc(45%);
              left: calc(45%);
              }
              "
-                    )
-                  )
-                ),
+      )
+    )
+  ),
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "app.css")
   ),
   
   div(splitLayout(titlePanel(h1("Jury Perception Study", align="center", 
-                )),
-                column(10,style="padding:30px;", 
-                       progressBar(id="progress", value=0, display_pct = TRUE))),
-                style = "position:fixed; width: 100%; background-color: white;z-index: 1"),
+  )),
+  column(10,style="padding:30px;", 
+         progressBar(id="progress", value=0, display_pct = TRUE))),
+  style = "position:fixed; width: 100%; background-color: white;z-index: 1"),
   conditionalPanel(condition= "input.informed==0",
                    column(width=8, offset=2,
                           wellPanel(style="margin-top:70px", p(uiOutput("informed_consent")),
-              column(12, actionButton("informed", "I Agree"), align="center"),
-              br()))
-    ),
+                                    column(12, actionButton("informed", "I Agree"), align="center"),
+                                    br()))
+  ),
   conditionalPanel(condition="input.demopage==2 & input.questionpage < output.num_quest",
                    wellPanel(style="background:url(Notebook.jpg); 
                              position: fixed; width: 98%; z-index:1; margin-top:70px", 
                              textAreaInput("notepad","Take Notes Here", rows=5, value=""),)),
   conditionalPanel(condition="input.informed==1 & input.demopage < 2",
                    column(width=8, offset=2,
-                   wellPanel(style="margin-top:70px",uiOutput("demoquest"),
-                             column(12, actionButton("demopage", "Next"), align="center"),
-                             br()))),
+                          wellPanel(style="margin-top:70px",uiOutput("demoquest"),
+                                    column(12, actionButton("demopage", "Next"), align="center"),
+                                    br()))),
   conditionalPanel(condition="input.demopage==2 & 
                    input.testimonypage < output.testpages",
                    column(width=8, offset=2,
-                   wellPanel(style="margin-top:290px", p(uiOutput("testimony"))),
-                   column(12, actionButton("testimonypage", "Next"), align="center"))),
+                          wellPanel(style="margin-top:290px", p(uiOutput("testimony"))),
+                          column(12, actionButton("testimonypage", "Next"), align="center"))),
   conditionalPanel(condition="input.testimonypage == output.testpages & 
                    input.questionpage < output.num_quest",
                    column(width=8, offset=2,
-                   wellPanel(style="margin-top:290px", uiOutput("finalquest"),
-                   column(12, actionButton("questionpage", "Next"), align="center"),
-                   br()))),
+                          wellPanel(style="margin-top:290px", uiOutput("finalquest"),
+                                    column(12, actionButton("questionpage", "Next"), align="center"),
+                                    br()))),
   conditionalPanel(condition="input.questionpage == output.num_quest",
                    wellPanel(style="margin-top:100px",sprintf("Completion Code: %s", completionCode)))
   
@@ -72,7 +72,7 @@ ui <- fluidPage(
 
 # --- server ------
 
- pool <- dbPool(drv = RSQLite::SQLite(), dbname = "main_redo_database.sqlite")
+pool <- dbPool(drv = RSQLite::SQLite(), dbname = "main_redo_database.sqlite")
 
 server <- function(input, output, session) {
   
@@ -81,9 +81,9 @@ server <- function(input, output, session) {
   if (algorithm == "Yes"){
     output$testpages <- reactive(23)
     servpages <- reactive(23)
-    } else if (algorithm=="No"){
-      output$testpages <- reactive(14)
-      servpages <- reactive(14)
+  } else if (algorithm=="No"){
+    output$testpages <- reactive(14)
+    servpages <- reactive(14)
                           }
   outputOptions(output, "testpages", suspendWhenHidden = FALSE)
   
@@ -253,12 +253,27 @@ server <- function(input, output, session) {
     ))
   })
   
+
+  
   observeEvent(input$testimonypage,{
     con <- localCheckout(pool, env = parent.frame())
     dbAppendTable(con, "notepad", noteans())
-    hide("testimonypage")
-    delay(2000, show("testimonypage"))
   })
+  
+  observeEvent(input$testimonypage,{
+    shinyjs::disable("testimonypage")
+    # Initialize the timer, 10 seconds, not active.
+    timer <- reactiveVal(2)
+    active <- reactiveVal(TRUE)
+    shinyjs::logjs("2s timer start")
+    shinyjs::delay(2000, {
+      shinyjs::logjs("timer up, enable next btn")
+      shinyjs::enable("testimonypage")
+    })
+  })
+  
+  
+
   
   observeEvent(input$convict, {
     ans_temp <- input$convict
@@ -463,6 +478,8 @@ server <- function(input, output, session) {
   observe({
     shinyjs::toggleState("demopage", question_verification() == 1)
   })
+  
+  
 }
 
 # Run the application
