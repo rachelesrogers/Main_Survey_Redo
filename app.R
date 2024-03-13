@@ -78,6 +78,7 @@ server <- function(input, output, session) {
   
   id <- NULL
   algorithm <- sample(c("Yes", "No"),1, prob=c(0.5, 0.5))
+
   if (algorithm == "Yes"){
     output$testpages <- reactive(23)
     servpages <- reactive(23)
