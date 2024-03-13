@@ -6,7 +6,7 @@ redo_dataset <- dbConnect(RSQLite::SQLite(), "main_redo_database.sqlite")
 
 responses <- dbGetQuery(redo_dataset, "SELECT * FROM survey_responses")
 
-wide_response <- responses %>% filter(time > 1706123631 & prolificid !="Rachel") %>%
+wide_response <- responses %>% filter(prolificid !="Rachel") %>%
   select(!c(time, page)) %>% 
   pivot_wider(names_from = question, values_from = answer)
 

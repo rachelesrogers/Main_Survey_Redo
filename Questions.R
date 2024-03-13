@@ -6,13 +6,13 @@ questions <- list(
                       defendant is the person who committed the alleged crime. If you are not
                       convinced beyond a reasonable doubt that the defendant is the person who
                       committed the alleged crime, you must find the defendant not guilty.
-                     Would you convict this defendant, based on the evidence that you have heard?",
+                     Would you convict this defendant (Richard Cole), based on the evidence that you have heard?",
       c("Yes", "No"), selected=character(0)
     )
   ),
   
   def_comment = list(
-    textInput("def_comment", "After reading this information, what do you think about the defendant?", value="")
+    textInput("def_comment", "After reading this information, what do you think about the defendant, Richard Cole?", value="")
   ),
   
  gun_opinion = list(
@@ -24,7 +24,7 @@ questions <- list(
  
  guilt_opinion = list(
    radioButtons(
-     "guilt_opinion", "Do you personally believe that the defendant is guilty of committing the crime?",
+     "guilt_opinion", "Do you personally believe that the defendant, Richard Cole, is guilty of committing the crime?",
      c("Yes", "No"), selected=character(0)
    )
  ),
@@ -44,7 +44,7 @@ def_probability = list(
     }')),
   sliderInput("def_probability",
               label = "What would you say is the percent chance that the
-                    defendant is the man who fired the shot in the convenience store?",
+                    defendant, Richard Cole, is the man who fired the shot in the convenience store?",
               min = 0, max = 100, value = 50,
               ticks=FALSE,
               animate=FALSE
@@ -71,7 +71,9 @@ scientific = list(
   fluidRow(column(2, align="center", p("unscientific", 
                                        style="padding:20px; margin-top:33px")),
            column(8,    sliderInput("scientific",
-                                    label = "How scientific did you find the examiner's comparison?",
+                                    label = "How scientific did you find the firearms examiner
+                                    (Terry Smith)'s manual comparison of the test fired bullet to the bullet 
+                                    recovered from the crime scene?",
                                     min = 0, max = 100, value = 50,
                                     ticks=FALSE,
                                     animate=FALSE)),
@@ -119,7 +121,7 @@ numeric_chance = list(
 ),
 
 def_chance = list(
-  radioButtons("def_chance", "What are the chances that the defendant is guilty?",
+  radioButtons("def_chance", "What are the chances that the defendant, Richard Cole, is guilty?",
                     choices = c("Certain to be guilty", "About 9,999 chances in 10,000", 
                                 "About 999 chances in 1,000","About 99 chances in 100", 
                                 "About 9 chances in 10", "1 chance in 2 (fifty-fifty chance)",
@@ -147,8 +149,8 @@ comments = list(
 
 alg_consistency = list(
   radioButtons("alg_consistency", 
-               "What are the chances that a different algorithm would come 
-               to the same conclusion?",
+               "What are the chances that a different bullet matching algorithm (developed
+               by another research group) would come to the same conclusion?",
                choices = c("Guaranteed to reach the same conclusion", "About 9,999 chances in 10,000", 
                            "About 999 chances in 1,000","About 99 chances in 100", 
                            "About 9 chances in 10", "1 chances in 2 (half of the time)",
@@ -175,7 +177,9 @@ alg_scientific = list(
   fluidRow(column(2, align="center", p("unscientific", 
                                        style="padding:20px; margin-top:33px")),
            column(8,    sliderInput("alg_scientific",
-                                    label = "How scientific did you find the algorithm comparison?",
+                                    label = "How scientific did you find the algorithmic comparison 
+                                    of the test fired bullet to the bullet 
+                                    recovered from the crime scene?",
                                     min = 0, max = 100, value = 50,
                                     ticks=FALSE,
                                     animate=FALSE)),
