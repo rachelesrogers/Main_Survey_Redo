@@ -69,7 +69,7 @@ scientific = list(
             visibility: hidden !important;
     }')),
   fluidRow(column(2, align="center", p("unscientific", 
-                                       style="padding:20px; margin-top:33px")),
+                                       style="padding:20px; margin-top:80px;")),
            column(8,    sliderInput("scientific",
                                     label = "How scientific did you find the firearms examiner
                                     (Terry Smith)'s manual comparison of the test fired bullet to the bullet 
@@ -78,12 +78,12 @@ scientific = list(
                                     ticks=FALSE,
                                     animate=FALSE)),
            column(2, align="center", p("scientific", 
-                                       style="padding:20px; margin-top:33px")))
+                                       style="padding:20px; margin-top:80px;")))
 ),
 
 mistakes = list(
   radioButtons("mistakes", 
-               "How often do you think the firearms examiner makes mistakes?",
+               "How often do you think the firearms examiner, Terry Smith, makes mistakes?",
                choices = c("Always makes mistakes", "About 9,999 comparisons in 10,000", 
                            "About 999 comparisons in 1,000","About 99 comparisons in 100", 
                            "About 9 comparisons in 10", "1 comparison in 2 (half of comparisons)",
@@ -95,7 +95,7 @@ mistakes = list(
 consistency = list(
   radioButtons("consistency", 
                "If other examiners were asked to make the same bullet comparison,
-               how many do you believe would agree with the firearms examiner's conclusion?",
+               how many do you believe would agree with the firearms examiner (Terry Smith)'s conclusion?",
                choices = c("All examiners", "About 9,999 examiners in 10,000", 
                            "About 999 examiners in 1,000","About 99 examiners in 100", 
                            "About 9 examiners in 10", "1 examiner in 2 (half of examiners)",
@@ -116,7 +116,7 @@ numeric_chance = list(
                    shinyWidgets::autonumericInput("like_denom", 
                                                   "", value=NA, minimumValue=1, 
                                                   maximumValue=1000000000000))),
-  fluidRow(column(4, align="center", p("that the defendant is guilty", 
+  fluidRow(column(7, align="center", p("that the defendant, Richard Cole, is guilty", 
                                        style="padding:20px;")))
 ),
 
@@ -175,7 +175,7 @@ alg_scientific = list(
             visibility: hidden !important;
     }')),
   fluidRow(column(2, align="center", p("unscientific", 
-                                       style="padding:20px; margin-top:33px")),
+                                       style="padding:20px; margin-top:40px")),
            column(8,    sliderInput("alg_scientific",
                                     label = "How scientific did you find the algorithmic comparison 
                                     of the test fired bullet to the bullet 
@@ -184,7 +184,7 @@ alg_scientific = list(
                                     ticks=FALSE,
                                     animate=FALSE)),
            column(2, align="center", p("scientific", 
-                                       style="padding:20px; margin-top:33px")))
+                                       style="padding:20px; margin-top:40px")))
 )
 
 )
