@@ -9,7 +9,7 @@ library(pool)
 source("Demographics.R")
 source("Questions.R")
 
-completionCode <- "ABCD" # Replace with prolific completion code
+completionCode <- "CURSXIHI" # Replace with prolific completion code
 
 consenttxt <- read.table("Informed_Consent.txt")
 testtxt<- read.csv("Combined_Testimony_Formatted.csv")
